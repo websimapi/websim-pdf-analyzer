@@ -2,7 +2,8 @@ import * as pdfjs from 'pdfjs';
 import 'pdfjs/build/pdf.worker';
 
 // Set PDF.js worker source
-pdfjs.GlobalWorkerOptions.workerSrc = 'pdfjs/build/pdf.worker';
+const pdfjsLib = window['pdfjs'];
+pdfjsLib.GlobalWorkerOptions.workerSrc = 'pdfjs/build/pdf.worker';
 
 // DOM elements
 const fileInput = document.getElementById('pdf-upload');
@@ -164,4 +165,3 @@ async function analyzePageImage(imageDataUrl, pageNumber) {
         throw new Error('Failed to analyze the page content');
     }
 }
-
