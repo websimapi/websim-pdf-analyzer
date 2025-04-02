@@ -1,7 +1,8 @@
 import * as pdfjsLib from 'pdfjs';
 
 // Set PDF.js worker source
-pdfjsLib.GlobalWorkerOptions.workerSrc = 'pdfjs/build/pdf.worker';
+const workerSrc = new URL('pdfjs/build/pdf.worker', import.meta.url).href;
+pdfjsLib.GlobalWorkerOptions.workerSrc = workerSrc;
 
 // DOM elements
 const fileInput = document.getElementById('pdf-upload');
