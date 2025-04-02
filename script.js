@@ -1,8 +1,6 @@
-import * as pdfjs from 'pdfjs';
-import 'pdfjs/build/pdf.worker';
+import * as pdfjsLib from 'pdfjs';
 
 // Set PDF.js worker source
-const pdfjsLib = window['pdfjs'];
 pdfjsLib.GlobalWorkerOptions.workerSrc = 'pdfjs/build/pdf.worker';
 
 // DOM elements
@@ -33,7 +31,7 @@ async function handleFileUpload(event) {
 
         // Read the PDF file
         const arrayBuffer = await file.arrayBuffer();
-        const pdf = await pdfjs.getDocument({ data: arrayBuffer }).promise;
+        const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
         
         // Process each page
         for (let i = 1; i <= pdf.numPages; i++) {
